@@ -21,7 +21,7 @@ public class ExcelEditor : EditorWindow
         {
             window = CreateWindow<ExcelEditor>("Excel工具");
         }
-        window.minSize = new Vector2(300, 300);
+        window.minSize = new Vector2(400, 400);
         window.Show();
         window.Focus();
     }
