@@ -1,0 +1,36 @@
+using UnityEngine;
+using System.Collections.Generic;
+using System;
+using System.Linq;
+
+/// <summary>
+/// 通过Excel文件中的表格自动生成的映射类
+/// <summary>
+//!!!!!自动生成的映射类，禁止手动修改!!!!!
+public class #CLASS_TYPE# : ScriptableObject
+{
+    [SerializeField]
+    SheetData[] dataArray;
+    public Dictionary<#KEY_TYPE#, SheetData> dataMap;
+
+    [Serializable]
+    public class SheetData
+    {
+#SHEETDATA#
+    }
+
+    public void Init()
+    {
+        dataMap = dataArray.ToDictionary(key => key.#KEY_NAME#, sheetData => sheetData);
+    }
+
+    public SheetData GetValue(#KEY_TYPE# key)
+    {
+        if (dataMap == null || !dataMap.ContainsKey(key))
+        {
+            Debug.LogError("dataMap中找不到key：" + key);
+            return null;
+        }
+        return dataMap[key];
+    }
+}
